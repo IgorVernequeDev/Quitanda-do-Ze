@@ -1,0 +1,60 @@
+{% extends 'modelo.html' %}
+{% block conteudo %}
+{% if not produtos %}
+<h1 class="display-5 text-center text-danger m-5">Estamos preparando as promoções desta semana...</h1>
+<h2 class="display-4 text-center text-success m-5">Retorne em breve.</h2>
+{% else %}
+<div><a href="/"><button class="btn btn-danger m-3">Voltar</button></a></div>
+<div class="container">
+    <div class="row g-3">
+        {% for produto in produtos %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card text-center bg-light"><img src="../static/img/produtos/{{ produto['imagem'] }}" class="card-img-top" />
+                <div class="card-header fs-3 text-danger">R$ {{produto['preco'] }}</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ produto['titulo'] }}</h5>
+                    <p class="card-text truncar-31">{{ produto['conteudo'] }}</p>
+                </div>
+        </div>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+        {% endif %}
+<nav>
+  {% if login %}
+  <h3 class="text-center mt-4">Bem vindo, Zé!</h3>
+  <div class="container d-flex justify-content-around mt-4">
+    <a href="/cadastro"><button class="btn btn-success">Cadastrar</button></a>
+    <a href="/logout" onclick="return confirm('Você tem certeza que deseja fazer logout?')"><button class="btn btn-danger">Logout</button></a>
+  </div>
+  <div class="content">
+</nav>
+    <div><a href="/"><button class="btn btn-danger m-3">Voltar</button></a></div>
+    <h2 class="container border-bottom border-success border-2 p-5 w-50 text-center border-opacity-100">Ofertas da semana
+    </h2>
+    {% endif %}
+  <div class="container col-p5">
+    <div class="row">
+      {% for produto in produtos %}
+      <div class="container card border border-2 border-success bg-success" style="width: 18rem;">
+        {% if login %}
+        <div class="d-flex justify-content-center m-2">
+          <a href="/excluir/{{produto['id']}}" class="me-2"
+            onclick="return confirm('Você tem certeza que deseja excluir esse produto?')"><img
+              src="../static/img/trash.png" width="30"></a>
+          <a href="/editar/{{produto['id']}}" class="editar"><img src="../static/img/pencil.png" width="30"></a>
+        </div>
+        {% endif %}
+        <img src="../static/img/000002.jpg" class="card-img-top rounded rounded-3" alt="...">
+        <div class="card-body">
+          <h2 class="text-white">{{ produto['titulo'] }}</h2>
+          <h3 class="text-white">{{ produto['preco'] }}</h3>
+          <p class="text-white">{{ produto['conteudo'] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

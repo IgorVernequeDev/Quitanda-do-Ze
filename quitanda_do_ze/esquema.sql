@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS produtos (
+
+id INTEGER PRIMARY KEY,
+titulo TEXT NOT NULL,
+conteudo TEXT NOT NULL,
+preco REAL NOT NULL,
+imagem TEXT NOT NULL
+
+);

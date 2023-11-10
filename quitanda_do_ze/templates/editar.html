@@ -1,0 +1,54 @@
+{% extends 'modelo.html' %}
+{% block conteudo %}
+<div class=""><a href="/"><button class="btn btn-danger m-3">Voltar</button></a></div>
+<div class="container">
+    <h1 class="mb-3 display-4">Editar produto</h1>
+    <form action="/editproduto" method="post" enctype="multipart/form-data" class="col-sm-10 col-md-8 col-lg-6 text-center needs-validation" novalidate>
+        {% for produto in produtos %}
+        <div class="form-floating mb-3">
+            <input type="text" name="titulo" class="form-control" value="{{ produto['titulo'] }}" placeholder="" autofocus />
+            <label for="titulo">Produto</label>
+        </div>
+        <div class="form-floating mb-3"><textarea name="conteudo" class="form-control" placeholder="">{{ produto['conteudo'] }}</textarea>
+        <label for="conteudo">Descrição</label>
+        </div>
+        <div class="input-group mb-3"><span class="input-group-text">R$</span>
+        <div class="form-floating"><input type="text" name="preco" class="form-control" value="{{ produto ['preco'] }}" placeholder="" />
+        <label for="preco">Preço</label>
+        </div>
+        </div>
+        <div class="input-group m2-3"><span class="input-group-text"><i class="bi bi-file-image"></i></span>
+        <div class="form-floating"><input type="file" name="imagem" id="imagem" accept="image/jpeg,image/png" class="form-control" required />
+        <div class="invalid-feedback">Você deve enviar a foto do produto
+        </div>
+        </div>
+    </div>
+    <input type="hidden" name="id" value="{{ produto['id'] }}" />
+    {% endfor %}
+    <input type="submit" value="Cadastrar" class="mt-3 btn btn-lg btn-danger justify-content-center" />
+    </form>
+    </div>
+</div>
+{% endblock %}
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+      'use strict'
+  
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation')
+  
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script>
