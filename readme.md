@@ -89,4 +89,4 @@ Contribuições são bem-vindas. Sinta-se à vontade para fazer um fork do repos
 
 ## Aluno
 
--[Igor de Almeida Verneque]: Estudante do cuso de Desenvolvimento de Sistemas.
+-[Igor de Almeida Verneque]: Estudante do curso de Desenvolvimento de Sistemas.
